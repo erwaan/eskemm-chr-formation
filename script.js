@@ -115,3 +115,28 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// ==========================================
+// ACCORDION POUR LES PROGRAMMES
+// ==========================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            const accordionItem = this.parentElement;
+            const isActive = accordionItem.classList.contains('active');
+            
+            // Fermer tous les accordéons
+            document.querySelectorAll('.accordion-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Ouvrir celui cliqué si il était fermé
+            if (!isActive) {
+                accordionItem.classList.add('active');
+            }
+        });
+    });
+});
